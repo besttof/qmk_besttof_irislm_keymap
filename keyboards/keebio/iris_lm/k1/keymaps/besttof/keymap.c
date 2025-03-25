@@ -2,11 +2,6 @@
 
 #include QMK_KEYBOARD_H
 
-#define TAPPING_TERM 200
-
-// #define CHORDAL_HOLD
-// #define PERMISSIVE_HOLD
-
 enum custom_layers {
      _BASE,
      _SYM,
