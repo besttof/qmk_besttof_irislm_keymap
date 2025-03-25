@@ -4,3 +4,6 @@
 
 #define CHORDAL_HOLD
 #define PERMISSIVE_HOLD
+
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+#define CAPS_WORD_IDLE_TIMEOUT 8000 // 8 seconds
