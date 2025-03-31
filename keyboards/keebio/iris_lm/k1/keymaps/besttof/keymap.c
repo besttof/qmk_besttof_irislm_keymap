@@ -92,42 +92,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-    case ARWLMDA:
-        if (record->event.pressed) {
-            SEND_STRING("=>");
-        } else {
-            // when keycode ARWLMDA is released
-        }
-        break;
-
-    case ARWPTR:
-        if (record->event.pressed) {
-            SEND_STRING("->");
-        } else {
-            // when keycode ARWPTR is released
-        }
-        break;
-
-    // TODO would be cool to use the os switch here https://docs.qmk.fm/features/os_detection
-    case KILLAPP:
-        if (record->event.pressed) {
-            switch (detected_host_os()) {
-                case OS_MACOS:
-                    tap_code16(G(KC_Q));
-                    break;
-                case OS_WINDOWS:
-                    tap_code16(A(KC_F4));
-                    break;
-                case OS_IOS:
-                case OS_LINUX:
-                case OS_UNSURE:
-                    break;
+        case ARWLMDA:
+            if (record->event.pressed) {
+                SEND_STRING("=>");
+            } else {
+                // when keycode ARWLMDA is released
             }
+            break;
 
-        } else {
-            // when keycode KILLAPP is released
-        }
-        break;
+        case ARWPTR:
+            if (record->event.pressed) {
+                SEND_STRING("->");
+            } else {
+                // when keycode ARWPTR is released
+            }
+            break;
+
+        // TODO would be cool to use the os switch here https://docs.qmk.fm/features/os_detection
+        case KILLAPP:
+            if (record->event.pressed) {
+                switch (detected_host_os()) {
+                    case OS_MACOS:
+                        //   tap_code16(G(KC_Q));
+                        SEND_STRING("MAC");
+                        break;
+                    case OS_WINDOWS:
+                        //   tap_code16(A(KC_F4));
+                        SEND_STRING("WIN");
+                        break;
+                    case OS_IOS:
+                    case OS_LINUX:
+                    case OS_UNSURE:
+                        SEND_STRING("IDK");
+                        break;
+                }
+
+            } else {
+                // when keycode KILLAPP is released
+            }
+            break;
     }
     return true;
 };
