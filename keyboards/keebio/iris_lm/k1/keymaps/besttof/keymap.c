@@ -148,10 +148,10 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
         //                  └────┴────┴────┘             └────┴────┴────┘
     );
 
-bool process_detected_host_os_kb(os_variant_t detected_os) {
-   if (!process_detected_host_os_user(detected_os)) {
-       return false;
-   }
+bool process_detected_host_os_user(os_variant_t detected_os) {
+
+   rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+
    switch (detected_os) {
        case OS_MACOS:
        case OS_IOS:
