@@ -112,6 +112,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
+        case COL_1:
+            if (record->event.pressed) {
+               rgblight_mode(1);
+               rgblight_sethsv(0xE1, 0xB5, 0x74);
+            }
+            break;
+        case COL_2:
+            if (record->event.pressed) {
+               rgblight_mode(1);
+               rgblight_sethsv(0x74, 0xBE, 0xE1);
+            }
+            break;
+        case COL_3:
+            if (record->event.pressed) {
+               rgblight_mode(1);
+               rgblight_sethsv(0x9F, 0xE1, 0x74);
+            }
+            break;
+
         // TODO would be cool to use the os switch here https://docs.qmk.fm/features/os_detection
         case KILLAPP:
             if (record->event.pressed) {
