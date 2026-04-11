@@ -23,6 +23,8 @@ enum custom_keycodes {
     IN_CBR,
     IN_ABK,
 
+    MD_CODE,
+
     // Color settings
     COL_1,
     COL_2,
@@ -192,6 +194,29 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
                              '*', '*', '*',               '*', '*', '*'
         //                  └────┴────┴────┘             └────┴────┴────┘
     );
+
+// COMBOS
+const uint16_t PROGMEM cb_34_LT[]   = {KC_3,   KC_4,   COMBO_END};
+const uint16_t PROGMEM cb_ER_LCBR[] = {KC_E,   KC_R,   COMBO_END};
+const uint16_t PROGMEM cb_DF_LBRC[] = {HOME_D, HOME_F, COMBO_END};
+const uint16_t PROGMEM cb_CV_LPRN[] = {KC_C,   HOME_V, COMBO_END};
+
+const uint16_t PROGMEM cb_78_GT[]   = {KC_7,   KC_8,    COMBO_END};
+const uint16_t PROGMEM cb_UI_RCBR[] = {KC_U,   KC_I,    COMBO_END};
+const uint16_t PROGMEM cb_JK_RBRC[] = {HOME_J, HOME_K,  COMBO_END};
+const uint16_t PROGMEM cb_MC_RPRN[] = {HOME_M, KC_COMM, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(cb_34_LT,   KC_LT),
+    COMBO(cb_ER_LCBR, KC_LCBR),
+    COMBO(cb_DF_LBRC, KC_LBRC),
+    COMBO(cb_CV_LPRN, KC_LPRN),
+
+    COMBO(cb_78_GT,   KC_GT),
+    COMBO(cb_UI_RCBR, KC_RCBR),
+    COMBO(cb_JK_RBRC, KC_RBRC),
+    COMBO(cb_MC_RPRN, KC_RPRN),
+};
 
 /*
 bool process_detected_host_os_user(os_variant_t detected_os) {
