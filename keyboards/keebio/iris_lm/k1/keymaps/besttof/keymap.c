@@ -15,7 +15,6 @@ enum custom_layers {
 enum custom_keycodes {
     ARWLMDA = SAFE_RANGE,
     ARWPTR,
-    KILLAPP,
 
     // Parenthesis, Bracket, Curly Bracket, Angle Bracket macros
     IN_PRN,
@@ -65,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SYM] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,                             KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KILLAPP,
+     _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,                             KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, KC_F11,  KC_F12,  _______, _______, _______,                            IN_BRC,  IN_PRN,  IN_CBR,  IN_ABK,  _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
@@ -153,26 +152,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 rgblight_mode(RGB_MATRIX_SOLID_COLOR);
                 rgblight_sethsv(32, 255, 88);
-            }
-            break;
-
-        // TODO would be cool to use the os switch here https://docs.qmk.fm/features/os_detection
-        case KILLAPP:
-            if (record->event.pressed) {
-                switch (detected_host_os()) {
-                    case OS_MACOS:
-                    case OS_IOS:
-                        tap_code16(G(KC_Q));
-                        break;
-                    case OS_WINDOWS:
-                        tap_code16(A(KC_F4));
-                        break;
-                    case OS_LINUX:
-                    case OS_UNSURE:
-                        break;
-                }
-            } else {
-                // when keycode KILLAPP is released
             }
             break;
     }
