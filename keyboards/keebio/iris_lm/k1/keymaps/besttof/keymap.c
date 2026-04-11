@@ -118,6 +118,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) SEND_STRING("->");
             break;
 
+        case MD_CODE:
+            if (record->event.pressed) SEND_STRING("```");
+            break;
+
         case IN_PRN:
            if (record->event.pressed) SEND_STRING("()"SS_TAP(X_LEFT));
            break;
@@ -175,49 +179,28 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
     );
 
 // COMBOS
-const uint16_t PROGMEM cb_34_LT[]   = {KC_3,   KC_4,   COMBO_END};
-const uint16_t PROGMEM cb_ER_LCBR[] = {KC_E,   KC_R,   COMBO_END};
-const uint16_t PROGMEM cb_DF_LBRC[] = {HOME_D, HOME_F, COMBO_END};
-const uint16_t PROGMEM cb_CV_LPRN[] = {KC_C,   HOME_V, COMBO_END};
+const uint16_t PROGMEM CB_MDCODE[] = {KC_GRV, KC_Q, COMBO_END};
 
-const uint16_t PROGMEM cb_78_GT[]   = {KC_7,   KC_8,    COMBO_END};
-const uint16_t PROGMEM cb_UI_RCBR[] = {KC_U,   KC_I,    COMBO_END};
-const uint16_t PROGMEM cb_JK_RBRC[] = {HOME_J, HOME_K,  COMBO_END};
-const uint16_t PROGMEM cb_MC_RPRN[] = {HOME_M, KC_COMM, COMBO_END};
+const uint16_t PROGMEM CB_LPRN[] = {KC_6,   KC_7,   COMBO_END};
+const uint16_t PROGMEM CB_LBRC[] = {KC_Y,   KC_U,   COMBO_END};
+const uint16_t PROGMEM CB_LCBR[] = {HOME_H, HOME_J, COMBO_END};
+const uint16_t PROGMEM CB_LT[]   = {KC_N,   HOME_M, COMBO_END};
+
+const uint16_t PROGMEM CB_RPRN[] = {KC_7, KC_8,      COMBO_END};
+const uint16_t PROGMEM CB_RBRC[] = {KC_U, KC_I,      COMBO_END};
+const uint16_t PROGMEM CB_RCBR[] = {HOME_J, HOME_K,  COMBO_END};
+const uint16_t PROGMEM CB_GT[]   = {HOME_M, KC_COMM, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(cb_34_LT,   KC_LT),
-    COMBO(cb_ER_LCBR, KC_LCBR),
-    COMBO(cb_DF_LBRC, KC_LBRC),
-    COMBO(cb_CV_LPRN, KC_LPRN),
+    COMBO(CB_MDCODE, MD_CODE),
 
-    COMBO(cb_78_GT,   KC_GT),
-    COMBO(cb_UI_RCBR, KC_RCBR),
-    COMBO(cb_JK_RBRC, KC_RBRC),
-    COMBO(cb_MC_RPRN, KC_RPRN),
+    COMBO(CB_LPRN, KC_LPRN),
+    COMBO(CB_LBRC, KC_LBRC),
+    COMBO(CB_LCBR, KC_LCBR),
+    COMBO(CB_LT,   KC_LT),
+
+    COMBO(CB_RPRN, KC_RPRN),
+    COMBO(CB_RBRC, KC_RBRC),
+    COMBO(CB_RCBR, KC_RCBR),
+    COMBO(CB_GT,   KC_GT),
 };
-
-/*
-bool process_detected_host_os_user(os_variant_t detected_os) {
-
-   rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
-
-   switch (detected_os) {
-       case OS_MACOS:
-       case OS_IOS:
-           rgb_matrix_set_color_all(RGB_WHITE);
-           break;
-       case OS_WINDOWS:
-           rgb_matrix_set_color_all(RGB_BLUE);
-           break;
-       case OS_LINUX:
-           rgb_matrix_set_color_all(RGB_ORANGE);
-           break;
-       case OS_UNSURE:
-           rgb_matrix_set_color_all(RGB_RED);
-           break;
-   }
-
-   return true;
-}
-*/
