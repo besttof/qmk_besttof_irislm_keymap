@@ -1,5 +1,8 @@
-// This is my layout, there are many like it but this one is mine/
+// This is my layout, there are many like it but this one is mine
 
+#include "keycodes.h"
+#include "keymap_us.h"
+#include "rgb_matrix.h"
 #include QMK_KEYBOARD_H
 
 enum custom_layers {
@@ -14,6 +17,8 @@ enum custom_keycodes {
     ARWPTR,
     KILLAPP,
 
+
+    // Color settings
     COL_1,
     COL_2,
     COL_3,
@@ -114,20 +119,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case COL_1:
             if (record->event.pressed) {
-               rgblight_mode(1);
-               rgblight_sethsv(0xE1, 0xB5, 0x74);
+                rgblight_mode(RGB_MATRIX_SOLID_COLOR);
+                rgblight_sethsv(0, 255, 88);
             }
             break;
+
         case COL_2:
             if (record->event.pressed) {
-               rgblight_mode(1);
-               rgblight_sethsv(0x74, 0xBE, 0xE1);
+                rgblight_mode(RGB_MATRIX_SOLID_COLOR);
+                rgblight_sethsv(128, 255, 88);
             }
             break;
+
         case COL_3:
             if (record->event.pressed) {
-               rgblight_mode(1);
-               rgblight_sethsv(0x9F, 0xE1, 0x74);
+                rgblight_mode(RGB_MATRIX_SOLID_COLOR);
+                rgblight_sethsv(32, 255, 88);
             }
             break;
 
@@ -149,7 +156,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                         SEND_STRING("IDK");
                         break;
                 }
-
             } else {
                 // when keycode KILLAPP is released
             }
@@ -174,6 +180,7 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
         //                  └────┴────┴────┘             └────┴────┴────┘
     );
 
+/*
 bool process_detected_host_os_user(os_variant_t detected_os) {
 
    rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
@@ -196,3 +203,4 @@ bool process_detected_host_os_user(os_variant_t detected_os) {
 
    return true;
 }
+*/
