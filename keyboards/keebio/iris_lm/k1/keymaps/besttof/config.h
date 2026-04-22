@@ -1,16 +1,25 @@
 #pragma once
 
-#define TAPPING_TERM 200
+#define TAPPING_TERM 220
+#define TAPPING_TERM_PER_KEY
 #define COMBO_TERM 40
 
 #define CHORDAL_HOLD
 #define PERMISSIVE_HOLD
+// To prevent accidental mod taps when typing, I think this means there needs to
+// be a 150ms pause before triggering mods
+#define FLOW_TAP_TERM 150 // https://docs.qmk.fm/tap_hold#flow-tap
+// Trigger mod keys as mod before deciding if it should be a tap, useful for modifier + mouse
+// But I think it triggers a mod in some cases that don't expect it (like games)
+#define SPECULATIVE_HOLD
 
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 #define CAPS_WORD_IDLE_TIMEOUT 8000 // 8 seconds
 
-
+// Sync the state between both halves of the keyboard
 #define SPLIT_LAYER_STATE_ENABLE
+
+// Lighting, remove most keep a small set of ok ones
 #define RGBLIGHT_SPLIT
 // #define RGBLIGHT_LAYERS
 

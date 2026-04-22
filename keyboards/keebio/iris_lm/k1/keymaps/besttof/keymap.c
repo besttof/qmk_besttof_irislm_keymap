@@ -122,6 +122,18 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
         //                  └────┴────┴────┘             └────┴────┴────┘
     );
 
+// TAPPING TERMS
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case HM_TAB:
+            return TAPPING_TERM + 50;
+        case HM_QUOT:
+            return TAPPING_TERM + 50;
+        default:
+            return TAPPING_TERM;
+    }
+}
+
 // MACROS
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
