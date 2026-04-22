@@ -1,6 +1,7 @@
 {
     "userspace_version": "1.1",
     "build_targets": [
-        ["keebio/iris_lm/k1", "besttof"]
+        ["keebio/iris_lm/k1", "besttof"],
+        ["zsa/voyager", "besttof"]
     ]
 }
